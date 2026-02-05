@@ -1,4 +1,4 @@
-## Setup do projeto
+## Aula 1. Setup do projeto
 
 ### Plugin prettier para ordenar classes tailwind (melhorar padrão)
 
@@ -90,3 +90,11 @@ npx drizzle-kit push
 ```
 npx drizzle-kit studio
 ```
+
+### Shadcn - biblioteca de components
+
+```
+npx shadcn@2.5.0 init
+```
+
+## Aula 2. Autenticação do projeto
