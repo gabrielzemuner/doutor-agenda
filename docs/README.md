@@ -101,9 +101,71 @@ npx shadcn@2.5.0 init
 
 ## Aula 2. Autenticação e configurações do estabelecimento
 
-- [] Tela de login e criação de conta
+- [x] Tela de login e criação de conta
 - [] Login com e-mail e senha
 - [] Login com o Google
 - [] Fundamentos do Next.js (Rotas, Páginas, Layouts)
 - [] Criação de clínica
 
+### Configuração de tela de login/criação de conta com shadcn
+
+### Login com e-mail e senha -> biblioteca betterauth
+
+```bash
+npm install better-auth@1.2.7
+```
+
+- definir variável de ambiente BETTER_AUTH_SECRET no arquivo `.env`
+
+- definir variável de ambiente BETTER_AUTH_URL no arquivo `.env`
+
+- criar arquivo `auth.ts` na pasta lib
+
+- conectar o betterauth com o drizzle
+
+- rodar o comando abaixo (antes instalar o dotenv pois o arquivo db/index.ts utiliza o dotenv)
+
+```bash
+npm install dotenv@16.5.0
+```
+
+```bash
+npx @better-auth/cli@1.2.7 generate
+```
+
+- clicar em yes pra gerar schema => `./auth-schema.ts`
+
+- o arquivo `auth-schema.ts` possui as tabelas que o betterauth precisa para funcionar. O betterauth cria a sessão atual do usuário e armazena no banco de dados
+
+- copiar e colar as tabelas do arquivo `auth-schema.ts` e colar no arquivo `src/db/schema.ts`
+
+- o betterauth (através do arquivo `auth-schema.ts`) cria uma tabela chamada user, mas nossa tabela no `schema.ts` é users. Necessário "fundir" as duas
+
+- precisamos aplicar as mudanças no banco de dados (antes, executar o comando sql `DROP table users CASCADE`)
+
+```bash
+npx drizzle-kit push
+```
+
+- pra manter o padrão do arquivo `schema.ts`, renomeado as consts e as tabelas:
+  - sessionsTable => tabela session => sessions
+  - accountsTable => tabela account => accounts
+  - verificationTable => tabela verification => verifications
+
+- no arquivo `auth.ts`, utilizar depois do provider o comando `usePlural: true`
+
+![alt text](image.png)
+
+- também precisamos que o betterauth utilize as tabelas que criamos no `schema.ts` pois estamos usando nomes diferentes do padrão
+
+![alt text](image-1.png)
+
+- rodar novamente o comando abaixo
+
+```bash
+npx drizzle-kit push
+```
+
+![alt text](image-2.png)
+
+- podemos deletar o arquivo `auth-schema.ts` que havia sido gerado, pois utilizamos apenas pra adaptar o schema do betterauth ao nosso schema do drizzle no arquivo `schema.ts`
