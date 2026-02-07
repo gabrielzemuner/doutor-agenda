@@ -1,5 +1,10 @@
 ## Aula 1. Setup do projeto
 
+- [x] Inicialização do projeto Next.js
+- [x] Configuração de ferramentas (ESlint, Prettier, Tailwind)
+- [x] Configuração do Drizzle e banco de dados
+- [x] Configuração de shadcn/ui
+
 ### Plugin prettier para ordenar classes tailwind (melhorar padrão)
 
 - https://tailwindcss.com/blog/automatic-class-sorting-with-prettier
@@ -29,9 +34,6 @@ npm install --save-dev prettier-plugin-organize-imports
   "plugins": ["prettier-plugin-organize-imports"]
 }
 ```
-
-
-
 ### Config git + dica commits
 
 - padrão conventional commits
@@ -97,4 +99,11 @@ npx drizzle-kit studio
 npx shadcn@2.5.0 init
 ```
 
-## Aula 2. Autenticação do projeto
+## Aula 2. Autenticação e configurações do estabelecimento
+
+- [] Tela de login e criação de conta
+- [] Login com e-mail e senha
+- [] Login com o Google
+- [] Fundamentos do Next.js (Rotas, Páginas, Layouts)
+- [] Criação de clínica
+
