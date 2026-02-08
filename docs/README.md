@@ -193,7 +193,7 @@ import { createAuthClient } from "better-auth/react";
 export const authClient = createAuthClient();
 ```
 
-- no arquivo sign-up-form, configurar a function onSubmit conforme abaixo
+- no arquivo `sign-up-form.tsx`, configurar a function onSubmit conforme abaixo
 
 ```tsx
   async function onSubmit(values: z.infer<typeof registerSchema>) {
@@ -234,4 +234,25 @@ export const authClient = createAuthClient();
 ```bash
 git add .
 git commit -m "feat: add sign up"
+```
+
+- agora configurar no arquivo `login-form.tsx` o que fizemos no `sign-up-form.tsx` 
+
+![alt text](image-8.png)
+
+- se tentarmos logar com credenciais erradas, teremos um erro
+
+![alt text](image-9.png)
+
+- configurar alerta (sonner/toast) em situações de erro
+
+![alt text](image-10.png)
+
+![alt text](image-11.png)
+
+![alt text](image-12.png)
+
+```bash
+git add .
+git commit -m "feat: add login"
 ```
