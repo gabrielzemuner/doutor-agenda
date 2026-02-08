@@ -281,14 +281,19 @@ git commit -m "feat: add custom error message for existing user"
 git add .
 git commit -m "feat: implement session management and redirection in authentication and dashboard pages"
 ```
+### Redirecionar o usuário para criar uma clínica ao logar pela primeira vez
 
+- usuário fez login:
+  - já tem clínica?
+    - não: redirecionar para a tela de criação de clínica
+    - sim: redirecionar para a tela de dashboard (primeira clínica que o usuário tem cadastrada - no futuro criar dropdown pra que o usário alterne entre as clínicas)
 
-# Dúvidas
+- importar no arquivo db/index.ts conforme abaixo para ter o autocomplete disponível
 
-## Porque o toast não funciona na página abaixo?
+![alt text](image-16.png)
 
-![alt text](image-14.png)
+- shadcn utiliza composition pattern
 
-## Qual a diferença de redirect para router push no exemplo abaixo? (os 2 funcionaram...)
+- server actions: funções que rodam no backend (executadas no lado do servidor) => é como se fossem rotas de api
 
-![alt text](image-15.png)
+- vamos precisar de server actions pra cadastrar uma nova clínica
