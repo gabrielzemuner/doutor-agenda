@@ -109,6 +109,11 @@ npx shadcn@2.5.0 init
 
 ### Configuração de tela de login/criação de conta com shadcn
 
+```bash
+git add .
+git commit -m "feat: add sign up form"
+```
+
 ### Login com e-mail e senha -> biblioteca betterauth
 
 ```bash
@@ -169,3 +174,64 @@ npx drizzle-kit push
 ![alt text](image-2.png)
 
 - podemos deletar o arquivo `auth-schema.ts` que havia sido gerado, pois utilizamos apenas pra adaptar o schema do betterauth ao nosso schema do drizzle no arquivo `schema.ts`
+
+```bash
+git add .
+git commit -m "chore: add better auth setup"
+```
+
+- acrescentar a linha abaixo no arquivo `auth.ts`
+
+```ts
+emailAndPassword: { enabled: true },
+```
+
+- criar arquivo `/lib/auth-client.ts`
+
+```ts
+import { createAuthClient } from "better-auth/react";
+export const authClient = createAuthClient();
+```
+
+- no arquivo sign-up-form, configurar a function onSubmit conforme abaixo
+
+```tsx
+  async function onSubmit(values: z.infer<typeof registerSchema>) {
+    const { email, password, name } = values;
+
+    await authClient.signUp.email(
+      {
+        email,
+        password,
+        name,
+        // callbackURL: "/dashboard", // redirecionamento depois que o usuário confirma e-mail
+      },
+      {
+        onSuccess: () => {
+          router.push("/dashboard");
+        },
+      },
+    );
+  }
+```
+
+- criar rota/arquivo dashboard
+
+- criar arquivo `route.ts`
+
+![alt text](image-3.png)
+
+- pra conseguir cadastrar um novo usuário, necessário incluir no arquivo `auth.ts` 
+
+![alt text](image-4.png)
+
+![alt text](image-5.png)
+
+![alt text](image-6.png)
+
+![alt text](image-7.png)
+
+```bash
+git add .
+git commit -m "feat: add sign up"
+```
