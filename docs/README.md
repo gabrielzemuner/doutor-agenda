@@ -256,3 +256,39 @@ git commit -m "feat: add sign up"
 git add .
 git commit -m "feat: add login"
 ```
+
+- melhorias no form: tentativa de cadastro de e-mail existente
+
+![alt text](image-13.png)
+
+```bash
+git add .
+git commit -m "feat: add custom error message for existing user"
+```
+
+- melhorias no form: dados do usuário logado
+
+ - server component: => acessar dados do backend componente `dashboard/page.tsx`
+ - pra carregar os dados do usuário logado existem 2 formas:
+    1. server component: => acessar dados diretamente do backend -> forma que estamos usando, com componente async await 
+    2. client component: => acessar dados do frontend, porém aqui podemos ter delay na renderização (dados do usuário em branco por alguns segundos até que o componente seja renderizado)
+
+ - se o usuário não estiver logado e tentar acessar dashboard, redirecionar para a tela de login => `dashboard/page.tsx`
+ - se o usuário estiver logado e tentar acessar login, redirecionar para a tela de dashboard => `authentication/page.tsx`
+ - ao cadastrar um novo usuário, redirecionar para a tela de dashboard logado => `sign-up-form.tsx`
+
+```bash
+git add .
+git commit -m "feat: implement session management and redirection in authentication and dashboard pages"
+```
+
+
+# Dúvidas
+
+## Porque o toast não funciona na página abaixo?
+
+![alt text](image-14.png)
+
+## Qual a diferença de redirect para router push no exemplo abaixo? (os 2 funcionaram...)
+
+![alt text](image-15.png)
