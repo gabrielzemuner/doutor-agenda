@@ -297,3 +297,29 @@ git commit -m "feat: implement session management and redirection in authenticat
 - server actions: funções que rodam no backend (executadas no lado do servidor) => é como se fossem rotas de api
 
 - vamos precisar de server actions pra cadastrar uma nova clínica
+
+### Autenticação com google (betterauth)
+
+- configurar google cloud platform
+
+![alt text](image-17.png)
+
+![alt text](image-18.png)
+
+![alt text](image-19.png)
+
+- oauth -> usar uma plataforma externa pra que o usuário consiga fazer login por meio dela (ex: google, facebook, etc)
+
+![alt text](image-20.png)
+
+- configurar variáveis de ambiente:
+  - GOOGLE_CLIENT_ID
+  - GOOGLE_CLIENT_SECRET
+
+- configurar provider do google no `auth.ts`
+
+![alt text](image-21.png)
+
+- adicionar botão de login com google no `login-form.tsx`
+
+- adicionar botão de login com google no `sign-up-form.tsx`
